@@ -88,8 +88,8 @@ public class ArrayList<E> implements List<E> {
 		for (int i = 0; i < index; i++) {
 			array[i] = temp[i];
 		}
-		for (int i = index + 1; i < length; i++) {
-			array[i - 1] = temp[i];
+		for (int i = index, j = index+1; i < length; i++, j++) {
+			array[i] = temp[j];
 		}
 	}
 
@@ -100,7 +100,6 @@ public class ArrayList<E> implements List<E> {
 			return false;
 		}
 		createNewArrayForAddAll(c);
-
 		int tempLength = temp.length;
 		for (int i = 0; i < tempLength; i++) {
 			array[i] = temp[i];
