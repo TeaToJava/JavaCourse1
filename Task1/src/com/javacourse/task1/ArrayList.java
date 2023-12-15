@@ -9,10 +9,6 @@ public class ArrayList<E> implements List<E> {
 	private int length = 0;
 	private E[] temp;
 
-	public ArrayList() {
-
-	}
-
 	public ArrayList(E[] array) {
 		this.array = array;
 		this.length = array.length;
