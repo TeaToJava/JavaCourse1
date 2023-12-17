@@ -28,13 +28,13 @@ public class PuttingIntoPractice {
 				.collect(Collectors.toList());
 
 		// 3. Найти всех трейдеров из Кембриджа и отсортировать их по именам.
-		List<Trader> tradersFromCambridge = transactions.stream().map(t -> t.getTrader())
-				.filter(t -> t.getCity().equals("Cambridge")).distinct().sorted(Comparator.comparing(Trader::getName))
+		List<Trader> tradersFromCambridge = transactions.stream().map(t -> t.getTrader()).distinct()
+				.filter(t -> t.getCity().equals("Cambridge")).sorted(Comparator.comparing(Trader::getName))
 				.collect(Collectors.toList());
 
 		// 4. Вернуть строку со всеми именами трейдеров, отсортированными в алфавитном
 		// порядке.
-		String traderNames = transactions.stream().map(t -> t.getTrader().getName()).distinct().sorted()
+		String traderNames = transactions.stream().map(t -> t.getTrader()).distinct().map(t-> t.getName()).sorted()
 				.collect(Collectors.joining(" "));
 
 		// 5. Выяснить, существует ли хоть один трейдер из Милана.
@@ -43,7 +43,8 @@ public class PuttingIntoPractice {
 
 		// 6. Вывести суммы всех транзакций трейдеров из Кембриджа.
 		List<Integer> valuesOfTransactionsFromCambridge = transactions.stream()
-				.filter(t -> t.getTrader().getCity().equals("Cambridge")).map(Transaction::getValue)
+				.filter(t -> t.getTrader().getCity().equals("Cambridge"))
+				.map(Transaction::getValue)
 				.collect(Collectors.toList());
 
 		// 7. Какова максимальная сумма среди всех транзакций?
